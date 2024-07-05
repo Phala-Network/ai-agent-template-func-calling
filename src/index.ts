@@ -122,14 +122,7 @@ async function GET(req: Request): Promise<Response> {
 }
 
 async function POST(req: Request): Promise<Response> {
-    const secret = req.queries?.key ?? '';
-    const openaiApiKey = req.secret?.openaiApiKey as string;
-    const openai = new OpenAI({ apiKey: openaiApiKey })
-    const query = req.queries.chatQuery[0] as string;
-
-    const response = await agent(openai, query);
-
-    return new Response(renderHtml(response as string))
+    return new Response('Not Implemented')
 }
 
 export default async function main(request: string) {
