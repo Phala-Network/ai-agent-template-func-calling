@@ -1,5 +1,4 @@
 import { Request, Response, route } from './httpSupport'
-import { renderHtml } from './uiSupport'
 
 import OpenAI from 'openai'
 
@@ -76,7 +75,7 @@ async function agent(openai: any, userInput: any) {
     for (let i = 0; i < 5; i++) {
         console.log(`[${i}]chat`)
         const response = await openai.chat.completions.create({
-            model: "gpt-4",
+            model: "gpt-4o",
             messages: messages,
             tools: tools,
         });
@@ -111,18 +110,21 @@ async function agent(openai: any, userInput: any) {
 }
 
 async function GET(req: Request): Promise<Response> {
-    const secret = req.queries?.key ?? '';
-    const openaiApiKey = req.secret?.openaiApiKey as string;
+    let result = { message: '' }
+    const secrets = req.secret || {}
+    const queries = req.queries
+    const openaiApiKey = (secrets.openaiApiKey) ? secrets.openaiApiKey as string : ''
     const openai = new OpenAI({ apiKey: openaiApiKey })
-    const query = req.queries.chatQuery[0] as string;
+    const query = (queries.chatQuery) ? queries.chatQuery[0] as string : 'What are some activities to do in Austin, Texas today?'
 
-    const response = await agent(openai, query);
+    const response = await agent(openai, query)
+    result.message = response as string;
 
-    return new Response(renderHtml(response as string))
+    return new Response(JSON.stringify(result))
 }
 
 async function POST(req: Request): Promise<Response> {
-    return new Response('Not Implemented')
+    return new Response(JSON.stringify({message: 'Not Implemented'}))
 }
 
 export default async function main(request: string) {

@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/Phala-Network/ai-agent-template-openai">
-    <h1>AI Agent Contract Template with OpenAI</h1>
+  <a href="https://github.com/Phala-Network/ai-agent-template-func-calling">
+    <h1>AI Agent Contract Template with OpenAI Function Calling</h1>
     <img height="320" src="./public/AI-Agent-Contract.jpg" />
     <br />
   </a>
@@ -11,12 +11,12 @@
   <p align="center">
     Host your AI Agent Contract on Phala's decentralized serverless cloud.
     <br />
-    <a href="https://github.com/Phala-Network/ai-agent-template-openai"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Phala-Network/ai-agent-template-func-calling"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="QmQu9AmBL13tyGpxgg5ASt96WQ669p63rnJRWiAo9st8ns/0?key=c0c0105ba56276cd&chatQuery=When%20did%20humans%20land%20on%20the%20moon">View Demo</a>
+    <a href="https://wapo-testnet.phala.network/ipfs/QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n?key=5150856fe20eb558&chatQuery=What%20are%20activities%20to%20do%20in%20Singapore%20today">View Demo</a>
     ·
-    <a href="https://github.com/Phala-Network/ai-agent-template-openai/issues">Report Bug</a>
+    <a href="https://github.com/Phala-Network/ai-agent-template-func-calling/issues">Report Bug</a>
     ·
     <a href="https://discord.gg/DXGGJajW">Discord</a>
   </p>
@@ -70,78 +70,49 @@ npm run test
 
 Expected Test Results
 ```shell
-
-> phat-gpt-template@0.0.1 test
-> tsx src/test.ts
-
-INPUT: {"method":"GET","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["Please suggest some activities based on my location and the weather."]},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{}}
+INPUT: {"method":"GET","path":"/ipfs/CID","queries":{},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{}}
+[0]chat
+[1]chat
+[2]chat
 GET RESULT: {
   status: 200,
-  body: '\n' +
-    '    <!DOCTYPE html>\n' +
-    '    <html lang="en">\n' +
-    '        <head>\n' +
-    '            <meta charset="utf-8" />\n' +
-    '            <title>AI-Agent Contract Demo UI</title>\n' +
-    '        </head>\n' +
-    '        <body>\n' +
-    '            <div align="center">\n' +
-    '                <p>"OpenAI AI-Agent Contract hosted on <a href="https://github.com/Phala-Network/ai-agent-template-openai">Phala Network</a>, a DePIN infrastructure for hosting AI-Agents."</p>\n' +
-    '                <img src="https://i.imgur.com/8B3igON.png" width="600" alt="AI-Agent Contract" />\n' +
-    '                <p>Based on your location in Chicago, Illinois and the current weather of an apparent temperature around 25°C, I would recommend these activities:\n' +
-    '\n' +
-    '1. Visit the Navy Pier: Enjoy the beautiful view of Lake Michigan, take a ride on the Centennial Wheel or enjoy a nice meal at one of the restaurants.\n' +
-    '\n' +
-    "2. Spend time in Millennium Park: With the weather being nice, it's a perfect day for a picnic. Plus, you can see the famous Cloud Gate sculpture!\n" +
-    '\n' +
-    '3. Walk along the Chicago Riverwalk: This pedestrian trail along the bank of the Chicago River offers a variety of restaurants, bars, and urban attractions.  \n' +
-    '\n' +
-    '4. Explore the Art Institute of Chicago: If you prefer indoor activities, you might enjoy visiting this world-renowned art museum. \n' +
-    '\n' +
-    'Remember to stay hydrated and wear comfortable footwear for walking around. Enjoy your day!</p>\n' +
-    '            </div>\n' +
-    '        </body>\n' +
-    '    </html>',
+  body: `{"message":"There's a lot to do in Austin, Texas! Here are some activities you might consider based on the current weather and various interests:\\n\\n### Outdoor Activities\\n1. **Lady Bird Lake & Zilker Park**\\n   - **Kayaking/Paddleboarding**: Enjoy a relaxing paddle on Lady Bird Lake.\\n   - **Hiking/Biking**: Explore the trails around Zilker Park and Barton Springs.\\n\\n2. **Barton Springs Pool**\\n   - A perfect spot for a swim and to cool off from the summer heat.\\n\\n3. **Mount Bonnell**\\n   - For those who love scenic views and a bit of hiking, head to Mount Bonnell for a panoramic view of the city.\\n\\n### Cultural Activities\\n1. **Blanton Museum of Art**\\n   - Explore a variety of art collections ranging from contemporary to ancient.\\n\\n2. **Bullock Texas State History Museum**\\n   - Learn about the rich history of Texas through exhibits and films.\\n\\n3. **South Congress Avenue (SoCo)**\\n   - Wander through boutique shops, galleries, and enjoy some street performances.\\n\\n### Music & Nightlife\\n1. **Live Music**\\n   - Check out iconic venues like the Continental Club or Antone’s for some live performances.\\n\\n2. **Rainey Street Historic District**\\n   - Explore a variety of bars and food trucks in this lively area.\\n\\n### Food & Beverage\\n1. **BBQ Heaven**\\n   - Visit Franklin Barbecue or la Barbecue for some of the best BBQ in the city.\\n   \\n2. **Food Trucks**\\n   - Explore the diverse array of food trucks offering a variety of cuisines.\\n\\n### Weather Considerations\\n- The apparent temperature during the day can reach up to 37.2°C (98.96°F) with some moments going as high as 38.9°C (102.02°F). Ensure you stay hydrated and take breaks in shaded or air-conditioned areas.\\n\\nNo matter what your interests are, Austin has a variety of activities to make your day enjoyable. Make sure to check local event listings as well for any special events or festivals happening today."}`,
   headers: {
-    'Content-Type': 'text/html; charset=UTF-8',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
 }
-
-INPUT: {"method":"POST","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["When did humans land on the moon?"],"openAiModel":["gpt-4o"]},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{},"body":"{\"untrustedData\":{\"fid\":2,\"url\":\"https://fcpolls.com/polls/1\",\"messageHash\":\"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\"timestamp\":1706243218,\"network\":1,\"buttonIndex\":2,\"castId\":{\"fid\":226,\"hash\":\"0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9\"}},\"trustedData\":{\"messageBytes\":\"d2b1ddc6c88e865a33cb1a565e0058d757042974...\"}}"}
-POST RESULT: {
+INPUT: {"method":"GET","path":"/ipfs/CID","queries":{"chatQuery":["What are some activities based in Brussels today?"]},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{}}
+[0]chat
+[1]chat
+[2]chat
+[3]chat
+GET RESULT: {
   status: 200,
-  body: 'Not Implemented',
+  body: `{"message":"Brussels is a vibrant city with a lot of things to offer on any given day. Here are some activities you can enjoy today:\\n\\n### Outdoor Activities\\n1. **Grand Place**\\n   - Visit the heart of Brussels and marvel at the stunning architecture. You might catch some street performances as well.\\n\\n2. **Parc du Cinquantenaire**\\n   - Take a relaxing stroll or have a picnic in this beautiful park.\\n\\n3. **Atomium**\\n   - Explore this unique building and enjoy panoramic views of the city.\\n\\n### Cultural Activities\\n1. **Royal Museums of Fine Arts of Belgium**\\n   - Explore Belgian art and various exhibitions ranging from ancient to modern art.\\n\\n2. **Magritte Museum**\\n   - Dive into the surreal world of René Magritte, one of Belgium's most famous artists.\\n\\n3. **Belgian Comic Strip Center**\\n   - Discover the rich history of comic strips in Belgium, including famous characters like Tintin.\\n\\n### Gourmet Experiences\\n1. **Chocolate and Beer Tours**\\n   - Take a guided tour to sample some of Brussels' best chocolates and beers.\\n\\n2. **Waffles and Frites**\\n   - Enjoy traditional Belgian waffles and fries at local eateries.\\n\\n### Shopping and Markets\\n1. **Galeries Royales Saint-Hubert**\\n   - Explore this beautiful shopping arcade filled with boutique shops and cafes.\\n\\n2. **Marolles Flea Market**\\n   - Hunt for unique items and antiques at this bustling market.\\n\\n### Theatre and Music\\n1. **Ancienne Belgique**\\n   - Check out the schedule for any concerts or performances happening today.\\n\\n2. **La Monnaie/De Munt**\\n   - Attend an opera or a ballet performance if available.\\n\\n### Historical Sites\\n1. **Manneken Pis**\\n   - Visit this famous statue, which often gets dressed up in various costumes.\\n\\n2. **Palais de Justice**\\n   - Visit this impressive courthouse and enjoy the views from its location.\\n\\n### Weather Considerations\\n- The apparent temperature in Brussels today ranges from 15.9°C (60.62°F) in the early morning to a high of around 31.6°C (88.88°F) in the late afternoon. Thus, it is quite pleasant for outdoor activities.\\n\\nWhatever your interests, Brussels has something to offer for everyone. Make sure to check local event listings as well for any special events or festivals happening today. Enjoy your day!"}`,
   headers: {
-    'Content-Type': 'text/html; charset=UTF-8',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
 }
+**NOTE**:
+This is a local test and your published code could have a different result when executing in the TEE on Phala Network.
 
-To test in the SideVM playground go to https://phat.phala.network/contracts/view/0xf0a398600f02ea9b47a86c59aed61387e450e2a99cb8b921cd1d46f734e45409
-
-Connect you polkadot.js account and select 'run_js' with the parameters:
-- engine: SidevmQuickJSWithPolyfill
-- js_code: Source code text of dist/index.ts
-- args: {"method":"GET","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["Who are you?"],"openAiModel":["gpt-4o"]},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{}}
-Watch video here for to see the visual steps of testing in Sidevm playground: https://www.youtube.com/watch?v=fNqNeLfFFME
-
-Make sure to replace queries and secret with your values compatible with your AI Agent Contract.
+Please reach out to the team here if your run into issues: https://discord.gg/phala-network
 ```
 
 ### Publish Your AI Agent
 Upload your compiled AI Agent code to IPFS.
 ```shell
-npm run publish
+npm run publish-agent
 ```
 
 Upon a successful upload, the command should show the URL to access your AI Agent.
 ```shell
-> phat-gpt-template@0.0.1 publish-agent
-> phat-fn build --experimentalAsync && tsx scripts/publish.ts
-
 ✓ Compiled successfully.
-  72.73 KB  dist/index.js
+  78.19 KB  dist/index.js
+Running command: npx thirdweb upload dist/index.js
+This may require you to log into thirdweb and will take some time to publish to IPFS...
 
     $$\     $$\       $$\                 $$\                         $$\       
     $$ |    $$ |      \__|                $$ |                        $$ |      
@@ -157,12 +128,15 @@ Upon a successful upload, the command should show the URL to access your AI Agen
 - Uploading file to IPFS. This may take a while depending on file sizes.
 
 ✔ Successfully uploaded file to IPFS.
-✔ Files stored at the following IPFS URI: ipfs://QmayeZxHXwJxABXaNshP6j8uBE6RedkhmEgiaXd1w1Jib3
-✔ Open this link to view your upload: https://bafybeif3y2jpswse2n6s2cikwyjmbak4cxlpm6vrmgobqkgsmmn34l6m4i.ipfs.cf-ipfs.com/
+✔ Files stored at the following IPFS URI: ipfs://QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n
+✔ Open this link to view your upload: https://b805a9b72767504353244e0422c2b5f9.ipfscdn.io/ipfs/bafybeibbasdv4xt32ea74ga77rpr5kgnkxcgqbtoslgxagzhmmujcjwkym/
 
-AI Agent Contract deployed at: https://agents.phala.network/ipfs/QmayeZxHXwJxABXaNshP6j8uBE6RedkhmEgiaXd1w1Jib3
+Agent Contract deployed at: https://wapo-testnet.phala.network/ipfs/QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n
 
-Make sure to add your secrets to ensure your AI-Agent works properly.
+If your agent requires secrets, ensure to do the following:
+1) Edit the setSecrets.ts file to add your secrets
+2) Set the variable AGENT_CID=QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n in the .env file
+3) Run command: npm run set-secrets
 ```
 
 <details>
@@ -170,54 +144,60 @@ Make sure to add your secrets to ensure your AI-Agent works properly.
 We use <a href="https://thirdweb.com/dashboard/infrastructure/storage">thirdweb Storage</a> to host IPFS contents. If you are new to thirdweb, the command will guide you to create your account or login to your existing account from the browser. (You may need to forward port 8976 if you are accessing a remote console via SSH.)
 </details>
 
+<details>
+<summary>Did thirdweb fail to publish?</summary>
+If ThirdWeb fails to publish, please use any IPFS pinning service to publish your Agent Contract.
+</details>
+
 ### Access the Published AI Agent
 
-Once published, your AI Agent is available at the URL: `https://agents.phala.network/ipfs/<your-cid>`. You can get it from the "Publish to IPFS" step.
+Once published, your AI Agent is available at the URL: `https://wapo-testnet.phala.network/ipfs/<your-cid>`. You can get it from the "Publish to IPFS" step.
 
 You can test it with `curl`.
 
 ```bash
-curl https://agents.phala.network/ipfs/<your-cid>
+curl https://wapo-testnet.phala.network/ipfs/<your-cid>
 ```
 
 ### Add Secrets
 
 By default, all the compiled JS code is visible for anyone to view if they look at IPFS CID. This makes private info like API keys, signer keys, etc. vulnerable to be stolen. To protect devs from leaking keys, we have added a field called `secret` in the `Request` object. It allows you to store secrets in a vault for your AI Agent to access.
 
-<details>
-<summary><b>How to Add Secrets</b></summary>
-
-The steps to add a `secret` is simple. We will add the [OpenAI](https://platform.openai.com/docs/quickstart?context=node) API Key in this example by creating a secret JSON object with the `openaiApiKey`:
-
-```json
-{"openaiApiKey": "<OPENAI_API_KEY>"}
+To add your secrets,
+1) edit the [setSecrets.ts](./scripts/setSecrets.ts) file and update the `secrets` variable at the top of the file
+```typescript
+// Update your key value JSON object here for your secrets
+const secrets = JSON.stringify({
+  // Add your secrets here
+  // key: value
+  openaiApiKey: process.env.OPENAI_API_KEY
+})
 ```
-
-Then in your frame code, you will be able to access the secret key via `req.secret` object:
-
-```js
-async function GET(req: Request): Promise<Response> {
-    const apiKey = req.secret?.openaiApiKey
-}
+2) Update the [.env](./.env.example) file with your published agent IPFS CID
+```text
+AGENT_CID=QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n
 ```
-
-> **Note**: Before continuing, make sure to publish your compiled AI Agent JS code, so you can add secrets to the CID.
-
-**Open terminal**
-Use `curl` to `POST` your secrets to `https://agents.phala.network/vaults`. Replace `IPFS_CID` with the CID to the compile JS code in IPFS, and replace `<OPENAI_API_KEY>` with your OpenAI API key. Note that you can name the secret field name something other than `openaiApiKey`, but you will need to access the key in your `index.ts` file with the syntax `req.secret?.<your-secret-field-name> as string`
-
-The command will look like this:
+3) Run command to set the secrets
 ```shell
-curl https://agents.phala.network/vaults -H 'Content-Type: application/json' -d '{"cid": "IPFS_CID", "data": {"openaiApiKey": "<OPENAI_API_KEY>"}}'
-# Output:
-# {"token":"e85ae53d2ba4ca8d","key":"e781ef31210e0362","succeed":true}
+npm run set-secrets
+```
+Expected output:
+```shell
+Storing secrets...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   205    0    68  100   137     80    162 --:--:-- --:--:-- --:--:--   242
+{"token":"c7c3e16511f86957","key":"5150856fe20eb558","succeed":true}
+
+Secrets set successfully. Go to the URL below to interact with your agent:
+https://wapo-testnet.phala.network/ipfs/QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n?key=5150856fe20eb558
 ```
 
 The API returns a `token` and a `key`. The `key` is the id of your secret. It can be used to specify which secret you are going to pass to your frame. The `token` can be used by the developer to access the raw secret. You should never leak the `token`.
 
 To verify the secret, run the following command where `key` and `token` are replaced with the values from adding your `secret` to the vault.
 ```shell
-curl https://agents.phala.network/vaults/<key>/<token>
+curl https://wapo-testnet.phala.network/vaults/<key>/<token>
 ```
 
 Expected output:
@@ -225,22 +205,12 @@ Expected output:
 {"data":{"openaiApiKey":"<OPENAI_API_KEY>"},"succeed":true}
 ```
 
-If you are using secrets, make sure that your URL is set in the following syntax where `cid` is the IPFS CID of your compiled JS file and `key` is the `key` from adding secrets to your vault.
-```text
-https://agents.phala.network/ipfs/<cid>?key=<key>
-```
-
-Example:
-https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9VzvkkdeFny7Smn3R/0?key=686df81d326fa5f2&chatQuery=When%20did%20humans%20land%20on%20the%20moon
-
-</details>
-
 ### Access Queries
 To help create custom logic, we have an array variable named `queries` that can be accessed in the `Request` class. To access the `queries` array variable `chatQuery` value at index `0`, the syntax will look as follows:
 ```typescript
 const query = req.queries.chatQuery[0] as string;
 ```
-The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9VzvkkdeFny7Smn3R/0?key=686df81d326fa5f2&chatQuery=When%20did%20humans%20land%20on%20the%20moon will have a value of `When did humans land on the moon`. `queries` can have any field name, so `chatQuery` is just an example of a field name and not a mandatory name, but remember to update your `index.ts` file logic to use your expected field name.
+The example at https://wapo-testnet.phala.network/ipfs/QmQZYAkEz8RnX9phpWscDLsv1u7uBATaAYHb1prpFGvD4n?key=5150856fe20eb558&chatQuery=What%20are%20activities%20to%20do%20in%20Singapore%20today will have a value of `When did humans land on the moon`. `queries` can have any field name, so `chatQuery` is just an example of a field name and not a mandatory name, but remember to update your `index.ts` file logic to use your expected field name.
 
 
 ## FAQ
@@ -251,8 +221,7 @@ The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9V
   <li>Most of the npm packages are supported: viem, onchainkit, ….</li>
   <li>Some packages with some advanced features are not supported:</li>
   <ul>
-    <li>Large code size. Compiled bundle should be less than 500kb.</li>
-    <li>Large memory usage, like image generation</li>
+    <li>Memory usage over 100MB</li>
     <li>Web Assembly</li>
     <li>Browser only features: local storage, service workers, etc</li>
   </ul>
@@ -264,13 +233,7 @@ The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9V
 <ul>
   <li>The code runs inside a tailored <a href="https://bellard.org/quickjs/">QuickJS engine</a></li>
   <li>Available features: ES2023, async, fetch, setTimeout, setInterval, bigint</li>
-  <li>Resource limits</li>
-  <ul>
-    <li>Max execution time ~60s</li>
-    <li>Max memory usage: 16 mb</li>
-    <li>Max code size: 500 kb</li>
-    <li>Limited CPU burst: CPU time between async calls is limited. e.g. Too complex for-loop may hit the burst limit.</li>
-  </ul>
+  <li> <a href="https://docs.phala.network/tech-specs/ai-agent-contract#wapojs/">Tech spec doc</a></li>
 </ul>
 </details>
 
