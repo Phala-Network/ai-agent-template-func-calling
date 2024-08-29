@@ -90,10 +90,10 @@ GET RESULT: {
     'Access-Control-Allow-Origin': '*'
   }
 }
-**NOTE**:
-This is a local test and your published code could have a different result when executing in the TEE on Phala Network.
-
-Please reach out to the team here if your run into issues: https://discord.gg/phala-network
+Now you are ready to publish your agent, add secrets, and interact with your agent in the following steps:
+- Execute: 'npm run publish-agent'
+- Set secrets: 'npm run set-secrets'
+- Go to the url produced by setting the secrets (e.g. https://wapo-testnet.phala.network/ipfs/QmPQJD5zv3cYDRM25uGAVjLvXGNyQf9Vonz7rqkQB52Jae?key=b092532592cbd0cf)
 ```
 
 ### Publish Your AI Agent
