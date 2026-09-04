@@ -18,7 +18,7 @@
     ·
     <a href="https://github.com/Phala-Network/ai-agent-template-func-calling/issues">Report Bug</a>
     ·
-    <a href="https://discord.gg/DXGGJajW">Discord</a>
+    <a href="https://phala.com/discord">Discord</a>
   </p>
 
 <h3>Architecure Overview</h3>
